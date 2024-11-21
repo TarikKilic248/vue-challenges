@@ -26,20 +26,9 @@ jobs:
           node-version: "20"
           cache: pnpm
       - name: Install pnpm
-        run: npm install -g pnpm
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
+        uses: pnpm/action-setup@v2
         with:
-          static_site_generator: nuxt
-      - name: Restore cache
-        uses: actions/cache@v4
-        with:
-          path: |
-            dist
-            .nuxt
-          key: ${{ runner.os }}-nuxt-build-${{ hashFiles('dist') }}
-          restore-keys: |
-            ${{ runner.os }}-nuxt-build-
+          version: 8
       - name: Install dependencies
         run: pnpm install
       - name: Static HTML export with Nuxt
